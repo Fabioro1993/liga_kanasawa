@@ -15,9 +15,9 @@
 				<a class="nav-link" href="{{url('index')}}"><span class="shape1"></span><span class="shape2"></span><i class="ti-home sidemenu-icon"></i><span class="sidemenu-label">Dashboard</span></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{url('index')}}"><span class="shape1"></span><span class="shape2"></span><i class="ti-home sidemenu-icon"></i><span class="sidemenu-label">Categorias</span></a>
+				<a class="nav-link" href="{{url('competition')}}"><span class="shape1"></span><span class="shape2"></span><i class="ti-home sidemenu-icon"></i><span class="sidemenu-label">Competencias</span></a>
 			</li>
-			<li class="nav-item">
+			{{-- <li class="nav-item">
 				<a class="nav-link with-sub" href="#"><span class="shape1"></span><span class="shape2"></span><i class="ti-wallet sidemenu-icon"></i><span class="sidemenu-label">Crypto Currencies</span><i class="angle fe fe-chevron-right"></i></a>
 				<ul class="nav-sub">
 					<li class="nav-sub-item">
@@ -399,7 +399,7 @@
 						<a class="nav-sub-link" href="{{url('error500')}}">500 Error</a>
 					</li>
 				</ul>
-			</li>
+			</li> --}}
 		</ul>
 	</div>
 </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CompetitionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,17 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('pages.index');
 });
-route::get('/index', [UserController::class, 'index']);
+
+Route::prefix('competition')->group(function () {
+    route::get('/', [CompetitionController::class, 'index'])->name('competition.index');
+    route::post('/store', [CompetitionController::class, 'store'])->name('competition.store');
+    route::get('/edit/{id}', [CompetitionController::class, 'edit']);
+    route::post('/update', [CompetitionController::class, 'update'])->name('competition.update');
+    route::delete('/destroy', [CompetitionController::class, 'destroy'])->name('competition.destroy');
+    route::post('/belts', [CompetitionController::class, 'belts'])->name('competition.belts');
+});
+
+/*route::get('/index', [UserController::class, 'index']);
 route::get('/index', [UserController::class, 'index']);
 route::get('/accordion', [UserController::class, 'accordion']);
 route::get('/alerts', [UserController::class, 'alerts']);
@@ -121,11 +132,4 @@ route::get('/warningmessage', [UserController::class, 'warningmessage']);
 route::get('/widgets', [UserController::class, 'widgets']);
 route::get('/width', [UserController::class, 'width']);
 route::get('/error404', [UserController::class, 'error404']);
-route::get('/error500', [UserController::class, 'error500']);
-
-
-
-
-
-
-
+route::get('/error500', [UserController::class, 'error500']);*/

@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('competencies', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('belts');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->integer('belt_id')->unsigned();
+            $table->foreign('belt_id')->references('id')->on('belts');
             $table->string('gender');
             $table->timestamps();
         });

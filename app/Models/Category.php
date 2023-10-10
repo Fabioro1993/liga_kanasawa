@@ -17,4 +17,9 @@ class Category extends Model
     const FORMATION = "Formación deportiva";
 
     protected $table = 'categories';
+
+    public function attributes()
+    {
+        return $this->hasMany(CategoriesAttributes::class, 'category_id', 'id');
+    }
 }
