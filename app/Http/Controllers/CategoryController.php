@@ -9,10 +9,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Competition;
 use App\Models\Category;
-use App\Models\Position;
-use App\Models\State;
 
-class CompetitionController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,8 +24,8 @@ class CompetitionController extends Controller
             return response()->json($data);
         }
 
-        $states = State::orderBy('id', 'asc')->get();
-        return view('competition.index', compact('states'));
+        $categories = Category::orderBy('id', 'asc')->get();
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -86,14 +84,10 @@ class CompetitionController extends Controller
      * @param  \App\Models\Competition  $competition
      * @return \Illuminate\Http\Response
      */
-    public function edit($competition_id, $type)
+    public function edit($id)
     {
-        $positions = Position::with(['category', 'state'])->where('competition_id', $competition_id)
-            ->where('type', $type)->get();
-
-        $competition = Competition::with(['category', 'belt'])->find($competition_id);
-
-        return compact('positions', 'competition');
+        $competition = Competition::with(['category', 'belt'])->find($id);
+        return $competition;
     }
 
     /**
@@ -105,66 +99,14 @@ class CompetitionController extends Controller
      */
     public function update(Request $request)
     {
-        $competition_id = $request->competition_id;
-        $type = $request->id_type;
-
-        $positions = Position::where('competition_id', $competition_id)
-            ->where('type', $type)->get();
         try {
             DB::beginTransaction();
 
-            if (count($positions) != 0) {
-                $positions = Position::where('competition_id', $competition_id)
-                    ->where('type', $type)->delete();
-            }
-
-            if ($request->first['full_name']) {
-                $position = new Position();
-                $position->positions      = 1;
-                $position->full_name      = $request->first['full_name'];
-                $position->dojo           = $request->first['dojo'];
-                $position->organization   = $request->first['organization'];
-                $position->state_id       = $request->first['state'];
-                $position->type           = $type;
-                $position->competition_id = $competition_id;
-                $position->save();
-            }
-
-            if ($request->two['full_name']) {
-                $position = new Position();
-                $position->positions      = 2;
-                $position->full_name      = $request->two['full_name'];
-                $position->dojo           = $request->two['dojo'];
-                $position->organization   = $request->two['organization'];
-                $position->state_id       = $request->two['state'];
-                $position->type           = $type;
-                $position->competition_id = $competition_id;
-                $position->save();
-            }
-
-            if ($request->three['full_name']) {
-                $position = new Position();
-                $position->positions      = 3;
-                $position->full_name      = $request->three['full_name'];
-                $position->dojo           = $request->three['dojo'];
-                $position->organization   = $request->three['organization'];
-                $position->state_id       = $request->three['state'];
-                $position->type           = $type;
-                $position->competition_id = $competition_id;
-                $position->save();
-            }
-
-            if ($request->four['full_name']) {
-                $position = new Position();
-                $position->positions      = 4;
-                $position->full_name      = $request->four['full_name'];
-                $position->dojo           = $request->four['dojo'];
-                $position->organization   = $request->four['organization'];
-                $position->state_id       = $request->four['state'];
-                $position->type           = $type;
-                $position->competition_id = $competition_id;
-                $position->save();
-            }
+            $competition              = Competition::find($request->id);
+            $competition->category_id = $request->category_id;
+            $competition->belt_id     = $request->belt_id;
+            $competition->gender      = $request->gender_id;
+            $competition->save();
 
             DB::commit();
             return true;

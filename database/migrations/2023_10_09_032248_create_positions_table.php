@@ -13,13 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('competitors', function (Blueprint $table) {
-            $table->id();
+        Schema::create('positions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('positions');
             $table->string('full_name');
             $table->string('dojo');
             $table->string('organization');
             $table->integer('state_id')->unsigned();
             $table->foreign('state_id')->references('id')->on('states');
+            $table->string('type');
+            $table->integer('competition_id')->unsigned();
+            $table->foreign('competition_id')->references('id')->on('competencies');
             $table->timestamps();
         });
     }
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competitors');
+        Schema::dropIfExists('positions');
     }
 };

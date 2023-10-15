@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('competencies', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('belt_id')->unsigned();

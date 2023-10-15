@@ -32,7 +32,7 @@
             </div>
         @endif
         <div>
-            <h2 class="main-content-title tx-24 mg-b-5">Competencias</h2>
+            <h2 class="main-content-title tx-24 mg-b-5">Competencia</h2>
             {{-- <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Maps & Tables</a></li>
                 <li class="breadcrumb-item active" aria-current="page">DataTable</li>
@@ -40,10 +40,10 @@
         </div>
         <div class="d-flex">
             <div class="justify-content-center">
-                <button type="button" class="btn btn-white btn-icon-text my-2 mr-2" data-target="#modal_competition_new" data-toggle="modal">
+                {{-- <button type="button" class="btn btn-white btn-icon-text my-2 mr-2" data-target="#modal_competition_new" data-toggle="modal">
                         <i class="fe fe-plus-square mr-2"></i> Nueva Competencia
-                    </button>
-                {{-- <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
+                </button>
+                <button type="button" class="btn btn-white btn-icon-text my-2 mr-2">
                     <i class="fe fe-filter mr-2"></i> Filter
                 </button>
                 <button type="button" class="btn btn-primary my-2 btn-icon-text">
@@ -68,9 +68,8 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>Cinturon</th>
-                                    <th>Genero</th>
-                                    <th>Accion</th>
+                                    <th>Kata</th>
+                                    <th>Kumite</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,57 +85,6 @@
 @endsection
 @section('modal')
     <!-- Large Modal -->
-    <div class="modal" id="modal_competition_new">
-		<div class="modal-dialog modal-lg" role="document">
-			<div class="modal-content modal-content-demo">
-                <form id="form_new_competition" method="POST">
-                    @csrf
-                    <div class="modal-header">
-                        <h6 class="modal-title"><i class="fe fe-plus-square mr-2"></i> Nueva Competencia</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <p class="mg-b-10">Categoria</p>
-                                    <select name="category_id" class="form-control select2" id="category_id_new" placeholder="category_id" required>
-                                        <option value="">Selecciona una Categoria</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{$category->id}}"><?PHP echo ucfirst($category->name);?></option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <p class="mg-b-10">Cinturones</p>
-                                    <select name="belt_id" class="form-control select2" id="belt_id_new" placeholder="Cinturon" required>
-                                        <option value="">Selecciona Cinturon</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <p class="mg-b-10">Genero</p>
-                                    <select name="gender_id" class="form-control select2" id="gender_id_new" placeholder="Genero">
-                                        <option value="F">Femenino</option>
-                                        <option value="M">Masculino</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn ripple btn-primary" type="submit">Save</button>
-                        <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
-                    </div>
-                </form>
-			</div>
-		</div>
-	</div>
-	<!--End Large Modal -->
-
-    <!-- Large Modal -->
 	<div class="modal" id="modal_edit_competition">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content modal-content-demo">
@@ -146,35 +94,132 @@
                 <form id="form_edit_competition" method="POST">
                     @csrf
                     <div class="modal-body">
-                        <h6>Edit</h6>
-                        <input type="hidden" id="id_edit" name="id">
+                    <input type="hidden" id="id_type" name="id_type">
+                    <input type="hidden" id="competition_id" name="competition_id">
+                        <h6>1er Lugar</h6>
                         <div class="row">
-                            <div class="col-md-6">
-
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <p class="mg-b-10">Categoria</p>
-                                    <select name="category_id" class="form-control select2" id="category_id" placeholder="category_id" required>
-                                        <option value="">Selecciona una Categoria</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{$category->id}}"><?PHP echo ucfirst($category->name);?></option>
+                                    <p class="mg-b-10">Nombre y Apellido</p>
+                                    <input type="text" class="form-control" id="full_name_first" name="first[full_name]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Dojo</p>
+                                    <input type="text" class="form-control" id="dojo_first" name="first[dojo]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Organizacion</p>
+                                    <input type="text" class="form-control" id="organization_first" name="first[organization]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Estado</p>
+                                    <select name="first[state]" class="form-control select2" id="state_first">
+                                        <option value="">Selecciona un Estado</option>
+                                        @foreach ($states as $state)
+                                            <option value="{{$state->id}}" selected><?PHP echo ucfirst($state->state);?></option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                        </div>
+                        <h6>2do Lugar</h6>
+                        <div class="row">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <p class="mg-b-10">Cinturones</p>
-                                    <select name="belt_id" class="form-control select2" id="belt_id" placeholder="Cinturon" required>
-                                        <option value="">Selecciona Cinturon</option>
-                                    </select>
+                                    <p class="mg-b-10">Nombre y Apellido</p>
+                                    <input type="text" class="form-control" id="full_name_two" name="two[full_name]">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <p class="mg-b-10">Genero</p>
-                                    <select name="gender_id" class="form-control select2" id="gender_id" placeholder="Genero">
-                                        <option value="F">Femenino</option>
-                                        <option value="M">Masculino</option>
+                                    <p class="mg-b-10">Dojo</p>
+                                    <input type="text" class="form-control" id="dojo_two" name="two[dojo]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Organizacion</p>
+                                    <input type="text" class="form-control" id="organization_two" name="two[organization]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Estado</p>
+                                    <select name="two[state]" id="state_two" class="form-control select2">
+                                        <option value="">Selecciona un Estado</option>
+                                        @foreach ($states as $state)
+                                            <option value="{{$state->id}}" selected><?PHP echo ucfirst($state->state);?></option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <h6>3er Lugar</h6>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Nombre y Apellido</p>
+                                    <input type="text" class="form-control" id="full_name_three" name="three[full_name]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Dojo</p>
+                                    <input type="text" class="form-control" id="dojo_three" name="three[dojo]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Organizacion</p>
+                                    <input type="text" class="form-control" id="organization_three" name="three[organization]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Estado</p>
+                                    <select id="state_three" class="form-control select2" name="three[state]">
+                                        <option value="">Selecciona un Estado</option>
+                                        @foreach ($states as $state)
+                                            <option value="{{$state->id}}" selected><?PHP echo ucfirst($state->state);?></option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <h6>4to Lugar</h6>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Nombre y Apellido</p>
+                                    <input type="text" class="form-control" id="full_name_four" name="four[full_name]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Dojo</p>
+                                    <input type="text" class="form-control" id="dojo_four" name="four[dojo]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Organizacion</p>
+                                    <input type="text" class="form-control" id="organization_four" name="four[organization]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <p class="mg-b-10">Estado</p>
+                                    <select id="state_four" class="form-control select2" name="four[state]">
+                                        <option value="">Selecciona un Estado</option>
+                                        @foreach ($states as $state)
+                                            <option value="{{$state->id}}" selected><?PHP echo ucfirst($state->state);?></option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -227,68 +272,35 @@
     <script src="{{URL::asset('assets/plugins/prism/prism.js')}}"></script>
 
     <script>
-
+        var text = null;
         let columnas = [
             {
                 data: 'category_id',
                 render: function (data, type, row, meta) {
-                    return row.category.name;
-                }
-            },
-            {
-                data: 'belt_id',
-                render: function (data, type, row, meta) {
-                     return row.belt.name;
-                }
-            },
-            {
-                data: 'gender',
-                render: function (data, type, row, meta) {
-                    if (data == 'F') {
-                        return 'Femenino';
+                    if (row.gender == 'F') {
+                        text = 'Femenino';
                     }
-                    if (data == 'M') {
-                        return 'Masculino';
+                    if (row.gender == 'M') {
+                        text =  'Masculino';
                     }
+                    return row.category.name + ' - '+row.belt.name+ ' - '+text;
                 }
             },
             {
                 data: 'id',
                 orderable: false,
                 render: function ( data, type, row) {
-                    return '<div aria-label="Basic example" class="btn btn-group" role="group"><button class="btn ripple btn-success btn-icon btn-sm open_modal" data-target="#modal_edit_competition" value="'+data+'"> <i class="fe fe-edit"></i> </button><button class="btn ripple btn-danger btn-icon btn-sm" value="'+data+'" onclick="swalWarning('+data+')"> <i class="fe fe-trash-2"></i></button></div>';
+                    return '<div aria-label="Basic example" class="btn btn-group" role="group"><button class="btn ripple btn-success btn-icon btn-sm open_modal" data-target="#modal_edit_competition" data-type="kata" value="'+data+'"> <i class="fe fe-edit"></i> </button></div>';
+                },
+            },
+            {
+                data: 'id',
+                orderable: false,
+                render: function ( data, type, row) {
+                    return '<div aria-label="Basic example" class="btn btn-group" role="group"><button class="btn ripple btn-success btn-icon btn-sm open_modal" data-target="#modal_edit_competition" data-type="Kumite" value="'+data+'"> <i class="fe fe-edit"></i> </button></div>';
                 },
             }
         ];
-
-        function swalWarning(id) {
-            swal({
-                title: "¿Seguro?",
-                text: "No podrá recuperar este archivo!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn btn-danger",
-                confirmButtonText: "Sí, bórralo!",
-                closeOnConfirm: false
-            },
-            function(){
-                $.ajax({
-                    url: "{{ route('competition.destroy') }}",
-                    method: 'delete',
-                    data: {
-                        id: id,
-                        _token: "{{ csrf_token() }}",
-                    },
-                    success: function(data) {
-                        swal("Eliminado!", "Su archivo ha sido borrado.", "success");
-                        table_competition.ajax.reload();
-                    },
-                    error: function(result) {
-                        swal("Cancelado", "Tu archivo está a salvo", "error");
-                    }
-                });
-            });
-        }
 
         $(document).ready(function (e) {
             table_competition = $("#table_competition").DataTable({
@@ -311,161 +323,55 @@
             });
         })
 
-        $('#category_id_new').on('change', function() {
-            const id = $(this).val();
-
-            $.ajax({
-                url: "{{ route('competition.belts') }}",
-                type: 'POST',
-                data: {
-                    id: id,
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function(result) {
-                    var belts = [];
-
-                    result.forEach(element => {
-                        belts.push({
-                            id: element.belt.id,
-                            text: element.belt.name
-                        });
-                    });
-
-                    $('#belt_id_new').empty().trigger('change')
-
-                    $('#belt_id_new').select2({
-                        data: belts,
-                    });
-                },
-                error: function(result) {
-                    // Show an alert with the result
-                    new Noty({
-                        type: "danger",
-                        text: result.message
-                    }).show();
-                }
-            });
-        })
-
-        $( "#form_new_competition" ).submit( function(e){
-            $("#global-loader").css("display", "block");
-            $.ajax({
-                url: "{{ route('competition.store') }}",
-                method: 'post',
-                data: $('#form_new_competition').serialize(),
-                success: function(data) {
-                    $('#modal_competition_new').modal('hide');
-                    $("#global-loader").css("display", "none");
-                    // notify({
-                    //     msg: "<b>Success:</b> Bien hecho detalles enviados con éxito",
-                    //     type: "success"
-                    // });
-                    $('#form_new_competition')[0].reset();
-                    table_competition.ajax.reload();
-                },
-                error: function(data, XMLHttpRequest, textStatus, errorThrown) {
-                    let errors = data.responseJSON.errors;
-                    $("#global-loader").css("display", "none");
-
-                    Object.entries(errors).forEach(([key, value]) => {
-                        notif({
-                            msg: "<b>Oops!</b> "+value[0],
-                            type: "error",
-                        });
-                    });
-                }
-            });
-            e.preventDefault();
-        });
 
         $(document).on('click','.open_modal',function(){
+            $('#form_edit_competition')[0].reset();
             var url = "/competition/edit";
-            var id= $(this).val();
-            $.get(url + '/' + id, function (data) {
-                //success data
-                searchBelt(data.category_id, data.belt_id)
+            var competition_id= $(this).val();
+            var type= $(this).data('type');
+            $.get(url + '/' + competition_id + '/' + type, function (data) {
 
-                $('#modal-title-user').html('<i class="fe fe-edit"></i> Editar Competencia: '+data.category.name);
-                $('#id_edit').val(data.id);
-                $('#category_id').val(data.category_id);
-                $('#belt_id').val(data.belt_id);
-                $('#gender_id').val(data.gender);
+                $('#modal-title-user').html('<i class="fe fe-edit"></i> Categoria: '+data.competition.category.name+' - '+data.competition.belt.name +' - '+data.competition.gender);
+                $('#competition_id').val(competition_id);
+                $('#id_type').val(type);
+
+                if (data['positions'].length != 0) {
+
+                    if (data['positions']) {
+                        $.each( data['positions'], function( key, value ) {
+
+                            if (value.positions == 1) {
+                                $('#full_name_first').val(value.full_name);
+                                $('#dojo_first').val(value.dojo);
+                                $('#organization_first').val(value.organization);
+                                $('#state_first').val(value.state_id);
+                            }
+                            if (value.positions == 2) {
+                                $('#full_name_two').val(value.full_name);
+                                $('#dojo_two').val(value.dojo);
+                                $('#organization_two').val(value.organization);
+                                $('#state_two').val(value.state_id);
+                            }
+                            if (value.positions == 3) {
+                                $('#full_name_three').val(value.full_name);
+                                $('#dojo_three').val(value.dojo);
+                                $('#organization_three').val(value.organization);
+                                $('#state_three').val(value.state_id);
+                            }
+                            if (value.positions == 4) {
+                                $('#full_name_four').val(value.full_name);
+                                $('#dojo_four').val(value.dojo);
+                                $('#organization_four').val(value.organization);
+                                $('#state_four').val(value.state_id);
+                            }
+                            console.log( key + ": " + value.positions );
+                        });
+                    }
+                }
+                //success data
                 $('#modal_edit_competition').modal('show');
             })
         });
-
-        function searchBelt(category_id, belt_id) {
-            $.ajax({
-                url: "{{ route('competition.belts') }}",
-                type: 'POST',
-                data: {
-                    id: category_id,
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function(result) {
-                    var belts = [];
-
-                    result.forEach(element => {
-                        belts.push({
-                            id: element.belt.id,
-                            text: element.belt.name
-                        });
-                    });
-
-                    $('#belt_id').empty().trigger('change')
-
-                    $('#belt_id').select2({
-                        data: belts,
-                    });
-
-                    $('#belt_id').val(belt_id);
-                    $('#belt_id').trigger('change');
-                },
-                error: function(result) {
-                    // Show an alert with the result
-                    new Noty({
-                        type: "danger",
-                        text: result.message
-                    }).show();
-                }
-            });
-        }
-
-        $('#category_id').on('change', function() {
-            const id = $(this).val();
-
-            $.ajax({
-                url: "{{ route('competition.belts') }}",
-                type: 'POST',
-                data: {
-                    id: id,
-                    _token: "{{ csrf_token() }}",
-                },
-                success: function(result) {
-                    var belts = [];
-
-                    result.forEach(element => {
-                        belts.push({
-                            id: element.belt.id,
-                            text: element.belt.name
-                        });
-                    });
-
-                    $('#belt_id').empty().trigger('change')
-
-                    $('#belt_id').select2({
-                        data: belts,
-                    });
-                },
-                error: function(result) {
-                    // Show an alert with the result
-                    new Noty({
-                        type: "danger",
-                        text: result.message
-                    }).show();
-                }
-            });
-        })
 
         $( "#form_edit_competition" ).submit( function(e){
             $.ajax({
@@ -474,20 +380,21 @@
                 data: $('#form_edit_competition').serialize(),
                 beforeSend: function() {
                     // aqui muestra el loading
-                    $("#global-loader").css("display", "block");
+                    //$("#global-loader").css("display", "block");
                 },
                 success: function(data) {
-                    $("#global-loader").css("display", "none");
+                   // $("#global-loader").css("display", "none");
                     $('#modal_edit_competition').modal('hide');
                     // notif({
                     //     msg: "<b>Success:</b> Well done Details edited successfully",
                     //     type: "success"
                     // });
+                    $('#form_edit_competition')[0].reset();
                     table_competition.ajax.reload();
                 },
                 error: function(data, XMLHttpRequest, textStatus, errorThrown) {
                     let errors = data.responseJSON.errors;
-                    $("#global-loader").css("display", "none");
+                    //$("#global-loader").css("display", "none");
                     Object.entries(errors).forEach(([key, value]) => {
                         // notif({
                         //     msg: "<b>Oops!</b> "+value[0],

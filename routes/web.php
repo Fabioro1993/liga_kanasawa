@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompetitionController;
 
 /*
@@ -19,17 +20,25 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
+Route::prefix('category')->group(function () {
+    route::get('/', [CategoryController::class, 'index'])->name('category.index');
+    route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+    route::get('/edit/{id}', [CategoryController::class, 'edit']);
+    route::post('/update', [CategoryController::class, 'update'])->name('category.update');
+    route::delete('/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
+    route::post('/belts', [CategoryController::class, 'belts'])->name('category.belts');
+});
+
 Route::prefix('competition')->group(function () {
     route::get('/', [CompetitionController::class, 'index'])->name('competition.index');
     route::post('/store', [CompetitionController::class, 'store'])->name('competition.store');
-    route::get('/edit/{id}', [CompetitionController::class, 'edit']);
+    route::get('/edit/{id}/{type}', [CompetitionController::class, 'edit']);
     route::post('/update', [CompetitionController::class, 'update'])->name('competition.update');
     route::delete('/destroy', [CompetitionController::class, 'destroy'])->name('competition.destroy');
     route::post('/belts', [CompetitionController::class, 'belts'])->name('competition.belts');
 });
 
 /*route::get('/index', [UserController::class, 'index']);
-route::get('/index', [UserController::class, 'index']);
 route::get('/accordion', [UserController::class, 'accordion']);
 route::get('/alerts', [UserController::class, 'alerts']);
 route::get('/avatar', [UserController::class, 'avatar']);
