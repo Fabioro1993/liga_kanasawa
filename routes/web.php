@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompetitionController;
 
@@ -36,6 +37,11 @@ Route::prefix('competition')->group(function () {
     route::post('/update', [CompetitionController::class, 'update'])->name('competition.update');
     route::delete('/destroy', [CompetitionController::class, 'destroy'])->name('competition.destroy');
     route::post('/belts', [CompetitionController::class, 'belts'])->name('competition.belts');
+});
+
+Route::prefix('reports')->group(function () {
+    route::get('/dojo', [ReportController::class, 'dojo'])->name('reports.dojo');
+    route::get('/organization', [ReportController::class, 'organization'])->name('reports.organization');
 });
 
 /*route::get('/index', [UserController::class, 'index']);
