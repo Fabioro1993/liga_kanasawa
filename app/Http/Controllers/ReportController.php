@@ -14,10 +14,8 @@ class ReportController extends Controller
         $url = 'reports.dojo';
 
         if ($request->ajax()) {
-            $category  = ($request->type_search == null) ? null : $request->type_search;
 
             $type = 'dojo';
-            $positions = Position::where('type', $category)->get()->groupBy('dojo');
 
             $base = "SELECT
                     dojo,
@@ -27,7 +25,6 @@ class ReportController extends Controller
                     SUM(CASE WHEN (positions = 3 OR positions = 4) THEN 1 ELSE 0 END) AS bronze
                 FROM
                     positions
-                WHERE type = '$category'
                 GROUP BY
                     $type
                 ";
@@ -48,10 +45,8 @@ class ReportController extends Controller
         $url = 'reports.organization';
 
         if ($request->ajax()) {
-            $category  = ($request->type_search == null) ? null : $request->type_search;
 
             $type = 'organization';
-            $positions = Position::where('type', $category)->get()->groupBy('organization');
 
             $base = "SELECT
                     dojo,
@@ -61,7 +56,6 @@ class ReportController extends Controller
                     SUM(CASE WHEN (positions = 3 OR positions = 4) THEN 1 ELSE 0 END) AS bronze
                 FROM
                     positions
-                WHERE type = '$category'
                 GROUP BY
                     $type
                 ";

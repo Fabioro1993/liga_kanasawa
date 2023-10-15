@@ -59,30 +59,6 @@
         <div class="col-lg-12">
             <div class="card custom-card overflow-hidden">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <div>
-                                    <p class="text-muted card-sub-title">Tipo</p>
-                                </div>
-                                <select name="type_search" class="form-control select2 select_search" id="type_search">
-                                    <option value="kata">Kata</option>
-                                    <option value="kumite">Kumite</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Row -->
-
-    <!-- Row -->
-    <div class="row row-sm">
-        <div class="col-lg-12">
-            <div class="card custom-card overflow-hidden">
-                <div class="card-body">
                     <div>
                         <h6 class="main-content-label mb-1">{{$report}}</h6>
                         <p class="text-muted card-sub-title"></p>
@@ -190,15 +166,13 @@
         ];
 
         $(document).ready(function (e) {
-            dataSearch();
             table_competition = $("#table_competition").DataTable({
+                dom: 'Bfrtip',
+                buttons: ['excel', 'pdf'],
                 ajax: {
                     url: url,
                     type: 'get',
-                    dataSrc:"",
-                    data: function (d) {
-                        d.type_search   = type_search;
-                    }
+                    dataSrc:""
                 },
                 columns: columnas,
                 responsive: true,
@@ -206,21 +180,15 @@
                 searching: true,
                 bInfo: true,
                 pagingType: "simple_numbers",
-                lengthChange: true,
+                lengthChange: false,
+		        //buttons: [ 'copy', 'excel', 'pdf', 'colvis' ],
                 pageLength: 50,
                 order: [
                     [0, 'desc'],
                 ],
             });
-        })
-
-        function dataSearch() {
-            type_search  = $("#type_search").val();
-        }
-
-        $('#type_search').on('change', function() {
-             dataSearch();
-             table_competition.ajax.reload();
+            table_competition.buttons().container()
+	            .appendTo( '#table_competition_wrapper .col-md-6:eq(0)' );
         })
     </script>
 @endsection
