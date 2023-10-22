@@ -2,10 +2,12 @@
 <div class="main-sidebar main-sidebar-sticky side-menu">
 	<div class="sidemenu-logo">
 		<a class="main-logo" href="{{url('competition')}}">
-			<img src="{{URL::asset('assets/img/brand/logo-light.png')}}" class="header-brand-img desktop-logo" alt="logo">
+			<img src="{{URL::asset('images/logo_liga.jpeg')}}" class="header-brand-img desktop-logo" alt="logo" style="width: 115px; height: 36px">
+
+			{{-- <img src="{{URL::asset('assets/img/brand/logo-light.png')}}" class="header-brand-img desktop-logo" alt="logo">
 			<img src="{{URL::asset('assets/img/brand/icon-light.png')}}" class="header-brand-img icon-logo" alt="logo">
 			<img src="{{URL::asset('assets/img/brand/logo.png')}}" class="header-brand-img desktop-logo theme-logo" alt="logo">
-			<img src="{{URL::asset('assets/img/brand/icon.png')}}" class="header-brand-img icon-logo theme-logo" alt="logo">
+			<img src="{{URL::asset('assets/img/brand/icon.png')}}" class="header-brand-img icon-logo theme-logo" alt="logo"> --}}
 		</a>
 	</div>
 	<div class="main-sidebar-body">
