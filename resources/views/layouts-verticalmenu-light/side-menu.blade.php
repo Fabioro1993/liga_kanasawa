@@ -26,6 +26,12 @@
 						<a class="nav-sub-link" href="{{url('reports/dojo')}}">Dojo</a>
 					</li>
 					<li class="nav-sub-item">
+						<a class="nav-sub-link" href="{{url('reports/dojo/dev')}}">Dojo Desarrollo</a>
+					</li>
+					<li class="nav-sub-item">
+						<a class="nav-sub-link" href="{{url('reports/dojo/formation')}}">Dojo Formacion</a>
+					</li>
+					<li class="nav-sub-item">
 						<a class="nav-sub-link" href="{{url('reports/organization')}}">Organizacion</a>
 					</li>
 				</ul>

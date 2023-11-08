@@ -121,6 +121,7 @@
                                     <select name="gender_id" class="form-control select2" id="gender_id_new" placeholder="Genero">
                                         <option value="F">Femenino</option>
                                         <option value="M">Masculino</option>
+                                        <option value="Mix">Mixto</option>
                                     </select>
                                 </div>
                             </div>
@@ -175,6 +176,7 @@
                                     <select name="gender_id" class="form-control select2" id="gender_id" placeholder="Genero">
                                         <option value="F">Femenino</option>
                                         <option value="M">Masculino</option>
+                                        <option value="Mix">Mixto</option>
                                     </select>
                                 </div>
                             </div>
@@ -249,6 +251,9 @@
                     }
                     if (data == 'M') {
                         return 'Masculino';
+                    }
+                    if (data == 'Mix') {
+                        return 'Mixto';
                     }
                 }
             },

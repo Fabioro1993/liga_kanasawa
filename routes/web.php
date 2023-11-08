@@ -40,5 +40,7 @@ Route::prefix('competition')->group(function () {
 
 Route::prefix('reports')->group(function () {
     route::get('/dojo', [ReportController::class, 'dojo'])->name('reports.dojo');
+    route::get('/dojo/dev', [ReportController::class, 'dev'])->name('reports.dojo.dev');
+    route::get('/dojo/formation', [ReportController::class, 'formation'])->name('reports.dojo.formation');
     route::get('/organization', [ReportController::class, 'organization'])->name('reports.organization');
 });

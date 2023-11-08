@@ -2,7 +2,7 @@
 		<link rel="icon" href="{{URL::asset('assets/img/brand/favicon.ico')}}" type="image/x-icon"/>
 
 		<!-- Title -->
-		<title>Liga Kanasawa</title>
+		<title>Liga Kanazawa</title>
 
 		<!-- Bootstrap css-->
 		<link href="{{URL::asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet"/>
