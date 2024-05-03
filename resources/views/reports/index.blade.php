@@ -124,6 +124,7 @@
     <script>
 
         let url = "{{$url}}";
+        let report = "{{$report}}";
 
         if (url == 'reports.dojo') {
             url = "{{ route('reports.dojo') }}"
@@ -140,7 +141,12 @@
                 data: 'dojo',
                 className: 'text-center',
                 render: function (data, type, row, meta) {
-                    return data;
+
+                    if (report == 'Organizacion') {
+                         return row.organization;
+                    }else{
+                        return data;
+                    }
                 }
             },
             {

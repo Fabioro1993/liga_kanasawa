@@ -283,6 +283,9 @@
                     if (row.gender == 'M') {
                         text =  'Masculino';
                     }
+                    if (row.gender == 'Mix') {
+                        text =  'Mixto';
+                    }
                     return row.category.name + ' - '+row.belt.name+ ' - '+text;
                 }
             },
