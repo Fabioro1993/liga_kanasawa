@@ -12,7 +12,7 @@
     <link href="{{URL::asset('assets/plugins/datatable/fileexport/buttons.bootstrap4.min.css')}}" rel="stylesheet" />
 
     <!-- Internal Prism css-->
-		<link href="{{URL::asset('assets/plugins/prism/prism.css')}}" rel="stylesheet">
+	<link href="{{URL::asset('assets/plugins/prism/prism.css')}}" rel="stylesheet">
 @endsection
 @section('content')
 
@@ -313,6 +313,11 @@
                 order: [
                     [0, 'desc'],
                 ],
+            });
+
+            $('#category_id_new').select2({
+                minimumResultsForSearch: 0, // Esto asegura que siempre se muestre el campo de búsqueda
+                width: '100%'
             });
         })
 

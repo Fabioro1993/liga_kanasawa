@@ -13,7 +13,7 @@ class BeltsTableSeeder extends Seeder
         Belt::create(array('id' => 2, 'name' => 'Amarillo/Naranja'));
         Belt::create(array('id' => 3, 'name' => 'Verde/Azul'));
         Belt::create(array('id' => 4, 'name' => 'Marron/Negro'));
-        Belt::create(array('id' => 5, 'name' => 'Todos'));
+        Belt::create(array('id' => 5, 'name' => 'Todos los cinturones'));
         Belt::create(array('id' => 6, 'name' => 'Blanco/Naranja'));
         Belt::create(array('id' => 7, 'name' => 'Verde/Negro'));
         Belt::create(array('id' => 8, 'name' => '4 Integrantes (3T 1S)'));
@@ -42,5 +42,12 @@ class BeltsTableSeeder extends Seeder
         Belt::create(array('id' => 31, 'name' => '+58kg'));
         Belt::create(array('id' => 32, 'name' => '+63kg'));
         Belt::create(array('id' => 33, 'name' => '+70kg'));
+
+        Belt::create(array('id' => 34, 'name' => '-32kg'));
+        Belt::create(array('id' => 35, 'name' => '+32kg'));
+        Belt::create(array('id' => 36, 'name' => '-35kg'));
+        Belt::create(array('id' => 37, 'name' => '+35kg'));
+
+        Belt::create(array('id' => 38, 'name' => '3 Integrantes'));
     }
 }

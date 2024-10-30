@@ -94,5 +94,57 @@ class CategoriesAttributesTableSeeder extends Seeder
         CategoriesAttributes::create(array('category_id' => 23, 'belt_id' => 24));
         CategoriesAttributes::create(array('category_id' => 23, 'belt_id' => 25));
         CategoriesAttributes::create(array('category_id' => 24, 'belt_id' => 5));
+
+        CategoriesAttributes::create(array('category_id' => 25, 'belt_id' => 18));
+        CategoriesAttributes::create(array('category_id' => 25, 'belt_id' => 19));
+        CategoriesAttributes::create(array('category_id' => 24, 'belt_id' => 20));
+        CategoriesAttributes::create(array('category_id' => 24, 'belt_id' => 21));
+        CategoriesAttributes::create(array('category_id' => 21, 'belt_id' => 22));
+        CategoriesAttributes::create(array('category_id' => 21, 'belt_id' => 23));
+        CategoriesAttributes::create(array('category_id' => 22, 'belt_id' => 24));
+        CategoriesAttributes::create(array('category_id' => 22, 'belt_id' => 25));
+        CategoriesAttributes::create(array('category_id' => 26, 'belt_id' => 34));
+        CategoriesAttributes::create(array('category_id' => 26, 'belt_id' => 35));
+        CategoriesAttributes::create(array('category_id' => 26, 'belt_id' => 36));
+        CategoriesAttributes::create(array('category_id' => 26, 'belt_id' => 37));
+        CategoriesAttributes::create(array('category_id' => 27, 'belt_id' => 11));
+        CategoriesAttributes::create(array('category_id' => 27, 'belt_id' => 27));
+        CategoriesAttributes::create(array('category_id' => 27, 'belt_id' => 12));
+        CategoriesAttributes::create(array('category_id' => 27, 'belt_id' => 28));
+        CategoriesAttributes::create(array('category_id' => 28, 'belt_id' => 12));
+        CategoriesAttributes::create(array('category_id' => 28, 'belt_id' => 28));
+        CategoriesAttributes::create(array('category_id' => 28, 'belt_id' => 15));
+        CategoriesAttributes::create(array('category_id' => 28, 'belt_id' => 31));
+        CategoriesAttributes::create(array('category_id' => 29, 'belt_id' => 13));
+        CategoriesAttributes::create(array('category_id' => 29, 'belt_id' => 29));
+        CategoriesAttributes::create(array('category_id' => 29, 'belt_id' => 16));
+        CategoriesAttributes::create(array('category_id' => 29, 'belt_id' => 32));
+        CategoriesAttributes::create(array('category_id' => 30, 'belt_id' => 14));
+        CategoriesAttributes::create(array('category_id' => 30, 'belt_id' => 30));
+        CategoriesAttributes::create(array('category_id' => 30, 'belt_id' => 17));
+        CategoriesAttributes::create(array('category_id' => 30, 'belt_id' => 33));
+        CategoriesAttributes::create(array('category_id' => 31, 'belt_id' => 38));
+        CategoriesAttributes::create(array('category_id' => 32, 'belt_id' => 38));
+        CategoriesAttributes::create(array('category_id' => 33, 'belt_id' => 38));
+
+        CategoriesAttributes::create(array('category_id' => 34, 'belt_id' => 9));
+        CategoriesAttributes::create(array('category_id' => 35, 'belt_id' => 9));
+        CategoriesAttributes::create(array('category_id' => 26, 'belt_id' => 9));
+        CategoriesAttributes::create(array('category_id' => 27, 'belt_id' => 9));
+        CategoriesAttributes::create(array('category_id' => 28, 'belt_id' => 9));
+        CategoriesAttributes::create(array('category_id' => 36, 'belt_id' => 9));
+
+        CategoriesAttributes::create(array('category_id' => 37, 'belt_id' => 5));
+        CategoriesAttributes::create(array('category_id' => 38, 'belt_id' => 5));
+
+        CategoriesAttributes::create(array('category_id' => 39, 'belt_id' => 6));
+        CategoriesAttributes::create(array('category_id' => 39, 'belt_id' => 3));
+        CategoriesAttributes::create(array('category_id' => 39, 'belt_id' => 4));
+
+        CategoriesAttributes::create(array('category_id' => 40, 'belt_id' => 6));
+        CategoriesAttributes::create(array('category_id' => 40, 'belt_id' => 7));
+
+        CategoriesAttributes::create(array('category_id' => 41, 'belt_id' => 6));
+        CategoriesAttributes::create(array('category_id' => 41, 'belt_id' => 7));
     }
 }
